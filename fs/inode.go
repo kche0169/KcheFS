@@ -15,6 +15,7 @@ const (
 type mode uint32
 
 const (
+	ModeNone    mode = iota
 	ModeExecute mode = 1 << iota
 	ModeWrite
 	ModeRead
