@@ -9,6 +9,12 @@ type DirEntry struct {
 	nameLen  int
 }
 
+// Dir represents a directory in a filesystem, containing an inode and a list of directory entries.
+type Dir struct {
+	Inode   *Inode
+	Entries []DirEntry
+}
+
 // AddDirEntry creates a new DirEntry with the given parameters.
 func AddDirEntry(name string, mode FileType, inode uint64, rec_len int, name_len int) *DirEntry {
 	return &DirEntry{
@@ -50,4 +56,18 @@ func RenameDirEntry(de *DirEntry, newName string) {
 
 func MoveDirEntry() {
 
+}
+
+// CreateDir initializes a new directory with an inode and an empty list of entries.
+func CreateDir() *Dir {
+	return &Dir{
+		Inode:   &Inode{}, // Assuming Inode is defined elsewhere
+		Entries: []DirEntry{},
+	}
+}
+
+func RemoveDir() {
+	// This function would handle the removal of a directory.
+	// In a real filesystem, it would involve checking if the directory is empty,
+	// removing all entries, and freeing the inode.
 }
